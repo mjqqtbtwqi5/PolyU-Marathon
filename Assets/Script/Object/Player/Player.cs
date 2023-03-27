@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     public Vector2 velocity;
     public float jumpVelocity = 25;
 
-    public float maxXVelocity = 100;
-    public float maxAcceleration = 10;
-    public float acceleration = 10;
+    public float maxXVelocity = 70;
+    public float maxAcceleration = 5;
+    public float acceleration = 5;
     public float distance = 0;
 
     private float groundHeight;
@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
                     pos.y = groundHeight;
                     isJumping = false;
                     playerAni.SetBool("IsJumping", isJumping);
+                    Debug.Log("Running on the ground: " + groundHeight);
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.green);
@@ -87,22 +88,18 @@ public class Player : MonoBehaviour
                 velocity.x = maxXVelocity;
             }
 
-            Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y);
-            Vector2 rayDirection = Vector2.up;
-            float rayDistance = velocity.y * Time.fixedDeltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
-            if(hit2D.collider == null)
-            {
-                isJumping = true;
-            }
-            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
+            // Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y);
+            // Vector2 rayDirection = Vector2.up;
+            // float rayDistance = velocity.y * Time.fixedDeltaTime;
+            // RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            // if(hit2D.collider == null)
+            // {
+            //     isJumping = true;
+            //     Debug.Log("Jump over the ground");
+            // }
+            // Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
         }
 
         transform.position = pos;
     }
-
-    // private void RaycastDetection(float val)
-    // {
-
-    // }
 }

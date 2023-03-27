@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    public float depth = 1;
+    public float depth = 10;
     private Player player;
 
     private void Awake()
@@ -21,12 +21,6 @@ public class Parallax : MonoBehaviour
         float realVelocity = player.velocity.x / depth;
         Vector2 pos = transform.position;
         pos.x -= realVelocity * Time.fixedDeltaTime;
-
-        // if(pos.x <= -10)
-        // {
-        //     pos.x = 10;
-        // }
-
         transform.position = pos;   
     }
 }

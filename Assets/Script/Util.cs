@@ -8,4 +8,9 @@ public class Util
     {
         return Camera.main.ScreenToWorldPoint(vector2);
     }
+
+    public RectTransform GetRectTransform(GameObject gameObject)
+    {
+        return (RectTransform)gameObject.transform;
+    }
 }
